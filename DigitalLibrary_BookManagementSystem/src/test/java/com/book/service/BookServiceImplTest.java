@@ -46,4 +46,16 @@ public class BookServiceImplTest {
 		verify(bookRepository, times(1)).save(book);
 	}
 
+	// Test for updating an existing book
+	@Test
+	void testUpsertBook_UpdateExistingRecord() {
+		book.setBookId(1); // Existing record scenario
+		when(bookRepository.save(book)).thenReturn(book);
+
+		String result = bookService.upsertBook(book);
+
+		assertEquals("Record Updated", result);
+		verify(bookRepository, times(1)).save(book);
+	}
+
 }
