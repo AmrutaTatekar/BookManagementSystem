@@ -16,7 +16,7 @@ public interface BookService {
 	public List<BookEntity> viewAllBooks();
 
 	// method to search a book by id
-	public Optional<BookEntity> searchBookByTitle(Integer bookId);
+	public BookEntity searchBookById(Integer bookId);
 
 	// Method to delete a book record
 	public String deleteBook(Integer bookId);

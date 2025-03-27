@@ -37,15 +37,21 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Optional<BookEntity> searchBookByTitle(Integer bookId) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public BookEntity searchBookById(Integer bookId) {
+		Optional<BookEntity> optional = bookRepository.findById(bookId);
+		if (optional.isPresent()) {
+			BookEntity bookEntity = optional.get();
+			return bookEntity;
+		}
+		return null;
 	}
 
 	@Override
 	public String deleteBook(Integer bookId) {
-		// TODO Auto-generated method stub
-		return null;
+		bookRepository.deleteById(bookId);
+		String msg = "Record Deleted";
+		return msg;
+
 	}
 
 }
